@@ -1,0 +1,7 @@
+!b 
+#d variab = (9 * (12) + 23 % 6);
+#q secondvr;
+$f ( #q qvariab >> 23 ) #q others = qvariab + 1;
+$w (variable <= 800) #b my_byte = variable * 2 + 1;
+$i (variab >= 8) #b my_byte = 1000
+!e

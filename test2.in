@@ -1,4 +1,7 @@
 !b 
-#b variable = 90 * (12 + 23);
-#q secondvr = 90 + 12
+variable = 90 * (12 + 23);
+#q secondvr
+$f ( #q thisVr > 23 ) #b another = thisVar + 1;
+$w (variable >> 800) #b my_byte = variable / 2;
+$i (thisVr >= 8) #b = 1000
 !e

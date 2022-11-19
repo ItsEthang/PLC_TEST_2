@@ -6,7 +6,7 @@ public class Syntax extends Lexeme {
 
     public static void main(String[] args) {
         try {
-            in_fp = new File("test2.in");
+            in_fp = new File("test4.in");
             reader = new FileReader(in_fp);
             program();
             reader.close();
@@ -88,10 +88,12 @@ public class Syntax extends Lexeme {
             if (nextToken != LEFT_PAREN) {
                 error();
             } else {
+                lex();
                 bool_expr();
                 if (nextToken != RIGHT_PAREN) {
                     error();
                 } else {
+                    lex();
                     stmt();
                 }
             }
@@ -109,10 +111,12 @@ public class Syntax extends Lexeme {
             if (nextToken != LEFT_PAREN) {
                 error();
             } else {
+                lex();
                 bool_expr();
                 if (nextToken != RIGHT_PAREN) {
                     error();
                 } else {
+                    lex();
                     stmt();
                 }
             }
@@ -120,7 +124,7 @@ public class Syntax extends Lexeme {
         System.out.println("Exit <while_l>");
     }
 
-    // * <for> → `$f` `(` INT_TYPE `>>` INT_LIT `)` <stmt>
+    // * <for> → `$f` `(` INT_TYPE IDEN `>>` INT_LIT `)` <stmt>
     static void for_l() {
         System.out.println("Enter <for_l>");
         if (nextToken != FOR_KEY) {
@@ -131,24 +135,28 @@ public class Syntax extends Lexeme {
                 error();
             } else {
                 lex();
-                if ((nextToken != INT_TYPE_BYTE) && (nextToken != INT_TYPE_WORD) && (nextToken != INT_TYPE_DWORD)
-                        && (nextToken != INT_TYPE_QWORD)) {
+                if (nextToken != INT_TYPE) {
                     error();
                 } else {
                     lex();
-                    if (nextToken != UNTIL) {
+                    if (nextToken != IDEN) {
                         error();
                     } else {
                         lex();
-                        if (nextToken != INT_LIT) {
+                        if (nextToken != UNTIL) {
                             error();
                         } else {
                             lex();
-                            if (nextToken != RIGHT_PAREN) {
+                            if (nextToken != INT_LIT) {
                                 error();
                             } else {
                                 lex();
-                                stmt();
+                                if (nextToken != RIGHT_PAREN) {
+                                    error();
+                                } else {
+                                    lex();
+                                    stmt();
+                                }
                             }
                         }
                     }
@@ -265,7 +273,7 @@ public class Syntax extends Lexeme {
         System.out.println("Exit <bterm>");
     }
 
-    // * <bfactor> → VAR_IDEN | INT_LIT | `(` <expr> `)`
+    // * <bfactor> → VAR_IDEN | INT_LIT | `(` <bool_expr> `)`
     static void bfactor() {
         System.out.println("Enter <bfactor>");
         if (nextToken == IDEN || nextToken == INT_LIT) {

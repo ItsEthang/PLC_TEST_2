@@ -1,4 +1,5 @@
 !b
 $i # q validVar == ( 89 * 789 ); 
 $d #b notvr >< 6 ( 89 % 999 );
+$w (#d thisVar >= 98) validVar - 1;
 !e
