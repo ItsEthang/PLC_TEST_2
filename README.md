@@ -2,4 +2,5 @@
 
 Part e is Lexeme.java <br>
 Part f is Syntax.java <br>
+Part g test files are test1.in, test2.in, test3.in, and test4.in.
 The rest is writtened in PLC_Test_2.pdf
