@@ -1,0 +1,4 @@
+!b 
+#b variable = 90 * (12 + 23);
+#q secondvr = 90 + 12
+!e
